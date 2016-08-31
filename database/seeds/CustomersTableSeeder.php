@@ -12,7 +12,9 @@ class CustomersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+
+        // Script Pertama contoh faker customers
+        /*$faker = Faker::create();
 
         foreach ( range(1,10) as $index ) {
         	DB::insert('insert into customers (name, phone, address) value ( :name, :phone, :address)', [
@@ -22,6 +24,23 @@ class CustomersTableSeeder extends Seeder
         			]);
         }
 
+        $this->command->info('Berhasil menambah customers data faker !!');*/
+
+
+        $faker = Faker::create();
+        $membership_type_id = [null, 1, 2];
+
+        foreach ( range(1,10) as $index ) {
+            DB::table('customers')->insert([
+                'name' => $faker->name,
+                'phone' => $faker->phoneNumber,
+                'address' => $faker->address,
+                'membership_type_id' => $membership_type_id[rand(0,2)]
+                
+                ]);
+        }
+
         $this->command->info('Berhasil menambah customers data faker !!');
+
     }
 }
