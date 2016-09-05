@@ -52,7 +52,31 @@ return [
             'prefix' => '',
         ],
 
+        /*-------CONTOH DB mysql ke 2------*/
+        'mysql2' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'database' => env('DB_DATABASE_2', 'laravel2'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+        /*-----------------------------------*/
+
         'mysql' => [
+        
+            /*--Configurasi READ n WRITE--yaitu READ tampil ketika dipanggil laravel, WRITE berubah ketika di edit*/
+            'read' => [
+                'database' => env('DB_DATABASE', 'forge'),
+                ], // ketika dipanggil yg miuncul db ini
+            'write' => [
+                'database' => env('DB_DATABASE_2', 'laravel2'), //ketika di edit yg ngrubah db 2ini
+                ],
+            /*--------------------------------*/
+
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
@@ -65,6 +89,8 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+
+        
 
         'pgsql' => [
             'driver' => 'pgsql',
